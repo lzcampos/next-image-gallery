@@ -17,12 +17,13 @@ import { SearchIcon } from "@chakra-ui/icons";
 import { getCuratedPhotos, getQueryPhotos } from "../lib/api";
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home({ data }) {
   const [query, setQuery] = useState("");
   const [photos, setPhotos] = useState(data);
   const toast = useToast();
-  
+
   const handleSubmit = async (e) => {
     await e.preventDefault();
     if (query == "") {
@@ -93,12 +94,16 @@ export default function Home({ data }) {
               lineHeight="0"
               _hover={{ boxShadow: "dark-lg" }}
             >
-              <Image
-                src={pic.src.portrait}
-                width="300"
-                height="450"
-                alt="{pic.url}"
-              />
+              <Link href={`/photos/${pic.id}`}>
+                <a>
+                  <Image
+                    src={pic.src.portrait}
+                    width="300"
+                    height="450"
+                    alt="{pic.url}"
+                  />
+                </a>
+              </Link>
             </WrapItem>
           ))}
         </Wrap>
