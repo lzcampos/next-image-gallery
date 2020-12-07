@@ -55,7 +55,7 @@ export default function Home({ data }) {
             fontWeight="semibold"
             mb="2rem"
             textAlign="center"
-            textDecoration="underline"
+            
             fontSize={["4xl", "4xl", "5xl", "5xl"]}
           >
             NextJS Image Gallery
@@ -75,7 +75,7 @@ export default function Home({ data }) {
                     aria-label="Search"
                     icon={<SearchIcon />}
                     onClick={handleSubmit}
-                    bg="pink.400"
+                    bg="pink.500"
                     color="white"
                   />
                 }
@@ -88,7 +88,7 @@ export default function Home({ data }) {
             <WrapItem
               key={pic.id}
               boxShadow="base"
-              rounded="20px"
+              rounded="25px"
               overflow="hidden"
               bg="white"
               lineHeight="0"
@@ -98,8 +98,8 @@ export default function Home({ data }) {
                 <a>
                   <Image
                     src={pic.src.portrait}
-                    width="300"
-                    height="450"
+                    width="200"
+                    height="300"
                     alt="{pic.url}"
                   />
                 </a>
@@ -113,7 +113,6 @@ export default function Home({ data }) {
 }
 export async function getServerSideProps() {
   const data = await getCuratedPhotos();
-
   return {
     props: {
       data,
